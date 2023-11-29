@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %} 
+{% block title %}Experiencia Laboral {% endblock %}
+{% block subtitle %}Mi Experiencia Laboral{% endblock %} 
+{% block content %}
+
+<div class="container bg-light p-5">
+  <div class="row gx-3 gy-5">
+    {% for work in works %}
+    <div class="col-md-9">
+      <div class="card h-100 p-3 shadow-lg">
+        <h4 class="card-title">{{ work.title }}</h4>
+        <h5 class="card-subtitle">{{ work.company }}</h5>
+        <p class="card-text mt-3">{{ work.description }}</p>
+        <p class="card-text mt-auto">
+          <small class="text-body-secondary">
+            {{ work.start_date }} - {% if work.end_date %}{{ work.end_date }}{% else %}Actualidad{% endif %}
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-3 border shadow-lg">
+      <img
+        src="{{ work.image.url }}"
+        class="img-fluid rounded"
+        alt="Imagen"
+        style="max-height: 300px"
+      />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "layouts/base.html" %} 
+{% block title%}Mateo Rivero{% endblock %} 
+{%load static %} 
+{% block subtitle %}Bienvenido/a{% endblock subtitle %} 
+{% block content %}
+
+<div class="container p-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-lg">
+        <img
+          src="{% static 'mateo.jpg' %}"
+          class="card-img-top img-fluid rounded-circle shadow-lg mx-auto mt-3"
+          alt="Imagen"
+          style="width: 200px; height: 200px"
+        />
+        <div class="card-body text-center">
+          <h4 class="card-title">Sobre Mí</h4>
+          <p class="card-text">
+            <small>
+              Me defino como una persona altamente comunicativa, cálida y con una
+              notable capacidad para adaptarme a diferentes entornos.Mi búsqueda
+              se centra en una oportunidad laboral donde pueda demostrar mi firme
+              compromiso y mi habilidad para enfrentar desafíos con
+              determinación. Destaco por mi extraordinaria productividad y una
+              asombrosa capacidad para absorber conocimientos rápidamente, lo
+              que me permite sobresalir y aportar valor de manera inmediata.
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container p-3 mt-5">
+  <form
+    method="post"
+    action="{% url 'index' %}"
+    class="row shadow-lg g-2 border rounded p-5 bg-secondary text-light"
+  >
+    {% csrf_token %}
+    <h2 class="text-center mb-4">Contactame</h2>
+
+    <div class="col-md-6">
+      <label for="{{ form.name.id_for_label }}" class="form-label"
+        >Nombre</label
+      >
+      {{ form.name }}
+    </div>
+
+    <div class="col-md-6">
+      <label for="{{ form.last_name.id_for_label }}" class="form-label"
+        >Apellido</label
+      >
+      {{ form.last_name }}
+    </div>
+
+    <div class="col-12">
+      <label for="{{ form.company.id_for_label }}" class="form-label"
+        >Empresa</label
+      >
+      {{ form.company }}
+    </div>
+
+    <div class="col-12">
+      <label for="{{ form.email.id_for_label }}" class="form-label"
+        >Correo Electrónico</label
+      >
+      {{ form.email }}
+    </div>
+
+    <div class="col-12">
+      <label for="{{ form.description.id_for_label }}" class="form-label"
+        >Descripción</label
+      >
+      {{ form.description }}
+    </div>
+
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-light">Enviar</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
